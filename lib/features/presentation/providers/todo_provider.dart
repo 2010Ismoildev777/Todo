@@ -19,4 +19,14 @@ class TodoProvider extends StateNotifier<List<Todo>> {
   void removeTodo(int index){
     state = [...state]..removeAt(index);
   }
+
+  void changeTodo(String id, String newTitle){
+    state = [
+      for(final todo in state)
+      if(todo.id == id)
+      todo.copyWith(title: newTitle) 
+      else
+      todo
+    ];
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:untitled1/features/presentation/providers/providers.dart';
+import 'package:untitled1/features/presentation/widgets/show_change_dialog.dart';
 import 'package:untitled1/features/presentation/widgets/show_dialog.dart';
 
 class HomePage extends ConsumerWidget {
@@ -63,6 +64,12 @@ class HomePage extends ConsumerWidget {
                       onChanged: (_) {
                         readTodo.toggleTodoStatus(todos[index].id);
                       },
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {
+                        showChangeDialog(context, ref, todos[index].id);
+                      },
+                      icon: Icon(Icons.edit, size: 25, color: Colors.blue),
                     ),
                   ),
                 ),
